@@ -1,0 +1,70 @@
+{
+  "campaign": {"id": "QA-2026-11-STAGING", "name": "Example shop - release 4.2 QA", "environment": "staging"},
+  "target": {
+    "start_url": "https://staging.example.com/en/",
+    "allowed_origins": ["https://staging.example.com"],
+    "allowed_paths": ["/en/", "/fr/"],
+    "excluded_paths": ["/en/account/delete", "/fr/compte/supprimer"],
+    "timezone": "Europe/Paris"
+  },
+  "languages": [
+    {
+      "code": "en", "label": "English", "locale": "en-GB",
+      "urls": {"home": "/en/", "about": "/en/about", "about_counterpart": "/fr/a-propos", "contact": "/en/contact", "thanks": "/en/contact/thanks"},
+      "strings": {"home_title": "Welcome", "nav_about": "About", "counterpart_lang": "fr", "required": "This field is required.", "thanks_title": "Thank you", "send": "Send"},
+      "keep_untranslated": ["Example Shop"]
+    },
+    {
+      "code": "fr", "label": "Français", "locale": "fr-FR",
+      "urls": {"home": "/fr/", "about": "/fr/a-propos", "about_counterpart": "/en/about", "contact": "/fr/contact", "thanks": "/fr/contact/merci"},
+      "strings": {"home_title": "Bienvenue", "nav_about": "À propos", "counterpart_lang": "en", "required": "Ce champ est obligatoire.", "thanks_title": "Merci", "send": "Envoyer"},
+      "keep_untranslated": ["Example Shop"]
+    }
+  ],
+  "countries": [],
+  "devices": [
+    {"id": "desktop", "label": "Desktop Chromium 1366x768", "browser": "chromium", "viewport": {"width": 1366, "height": 768}, "is_mobile": false},
+    {"id": "mobile", "label": "Mobile emulation 390x844", "browser": "chromium", "viewport": {"width": 390, "height": 844}, "is_mobile": true, "has_touch": true}
+  ],
+  "auth": {"method": "none", "username_ref": "env:QA_USER", "password_ref": "env:QA_PASSWORD"},
+  "allowed_actions": {"form_submission": "staging-only", "submit_paths": []},
+  "limits": {"timeout_ms": 10000, "assert_timeout_ms": 3000, "retries": 2, "max_cases": 60, "max_minutes": 30},
+  "output": {"dir": "qa-output", "formats": ["md", "json", "csv"], "output_language": "en"},
+  "assumptions": ["Expected strings come from the copy deck v3 shared by the product owner."],
+  "journeys": [
+    {
+      "id": "J01", "title": "Open the home page in the requested language", "priority": "P1", "release_critical": true,
+      "device": "desktop", "languages": ["en", "fr"], "checks": ["navigation", "multilingual-structure"],
+      "preconditions": ["None"], "expected": "HTTP 200, correct <html lang>, localized title.",
+      "steps": [
+        {"action": "goto", "url": "{{url.home}}"},
+        {"action": "expect_status", "in": [200]},
+        {"action": "expect_lang", "value": "{{lang}}"},
+        {"action": "expect_text", "selector": "h1", "text": "{{s.home_title}}"}
+      ]
+    },
+    {
+      "id": "J02", "title": "Switch language from an internal page", "priority": "P1", "release_critical": true,
+      "device": "mobile", "languages": ["en", "fr"], "checks": ["language-switch"],
+      "preconditions": ["Open the About page in the language under test"],
+      "expected": "The language switcher opens the same page in the other language.",
+      "steps": [
+        {"action": "goto", "url": "{{url.about}}"},
+        {"action": "click", "selector": "[hreflang] , .lang-switch a", "description": "Click the language switcher"},
+        {"action": "expect_url", "path": "{{url.about_counterpart}}"},
+        {"action": "expect_lang", "value": "{{s.counterpart_lang}}"}
+      ]
+    },
+    {
+      "id": "J03", "title": "Submit an empty contact form", "priority": "P2", "release_critical": false,
+      "device": "desktop", "languages": ["en", "fr"], "checks": ["journey", "localization"],
+      "preconditions": ["Contact page"], "expected": "Submission refused, localized required-field message shown.",
+      "steps": [
+        {"action": "goto", "url": "{{url.contact}}"},
+        {"action": "click", "role": "button", "name": "{{s.send}}", "description": "Click the submit button"},
+        {"action": "expect_url", "path": "{{url.contact}}"},
+        {"action": "expect_text", "text": "{{s.required}}"}
+      ]
+    }
+  ]
+}

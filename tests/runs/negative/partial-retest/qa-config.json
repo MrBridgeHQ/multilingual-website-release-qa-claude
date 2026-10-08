@@ -1,0 +1,669 @@
+{
+  "campaign": {
+    "id": "NEG-retest",
+    "name": "Northwind Outdoor demo - FR/EN release QA",
+    "environment": "local demo (tests/demo-site/server.py on 127.0.0.1:8765)"
+  },
+  "target": {
+    "start_url": "http://127.0.0.1:8766/en/",
+    "allowed_origins": [
+      "http://127.0.0.1:8766"
+    ],
+    "allowed_paths": [
+      "/en/",
+      "/fr/"
+    ],
+    "excluded_paths": [
+      "/en/account",
+      "/fr/compte"
+    ],
+    "timezone": "Europe/Paris"
+  },
+  "languages": [
+    {
+      "code": "en",
+      "label": "English",
+      "locale": "en-US",
+      "urls": {
+        "home": "/en/",
+        "about": "/en/about",
+        "about_counterpart": "/fr/a-propos",
+        "offer": "/en/offers/premium",
+        "legacy_offers": "/en/old-offers",
+        "search": "/en/search",
+        "contact": "/en/contact",
+        "thanks": "/en/contact/thanks"
+      },
+      "strings": {
+        "home_title": "Welcome to Northwind Outdoor",
+        "nav_about": "About",
+        "nav_offers": "Offers",
+        "about_title": "About us",
+        "counterpart_lang": "fr",
+        "search_hit_term": "backpack",
+        "search_hit_product": "Alpine backpack 30 L",
+        "search_miss_term": "zzqx-no-match",
+        "no_results": "No results for",
+        "required": "This field is required.",
+        "bad_email": "Enter a valid email address.",
+        "thanks_title": "Thank you",
+        "offer_badge": "Limited offer",
+        "offer_price": "€1,290.00",
+        "offer_date": "Valid until 12/31/2026"
+      },
+      "keep_untranslated": [
+        "Northwind Outdoor",
+        "Gore-Tex",
+        "Contact",
+        "Menu",
+        "Message"
+      ]
+    },
+    {
+      "code": "fr",
+      "label": "Français",
+      "locale": "fr-FR",
+      "urls": {
+        "home": "/fr/",
+        "about": "/fr/a-propos",
+        "about_counterpart": "/en/about",
+        "offer": "/fr/offres/premium",
+        "legacy_offers": "/fr/anciennes-offres",
+        "search": "/fr/recherche",
+        "contact": "/fr/contact",
+        "thanks": "/fr/contact/merci"
+      },
+      "strings": {
+        "home_title": "Bienvenue chez Northwind Outdoor",
+        "nav_about": "À propos",
+        "nav_offers": "Offres",
+        "about_title": "Qui sommes-nous",
+        "counterpart_lang": "en",
+        "search_hit_term": "trail",
+        "search_hit_product": "Chaussures de trail",
+        "search_miss_term": "zzqx-sans-resultat",
+        "no_results": "Aucun résultat pour",
+        "required": "Ce champ est obligatoire.",
+        "bad_email": "Saisissez une adresse e-mail valide.",
+        "thanks_title": "Merci",
+        "offer_badge": "Offre limitée",
+        "offer_price": "1 290,00 €",
+        "offer_date": "Valable jusqu'au 31/12/2026"
+      },
+      "keep_untranslated": [
+        "Northwind Outdoor",
+        "Gore-Tex",
+        "Contact",
+        "Menu",
+        "Message"
+      ]
+    }
+  ],
+  "countries": [],
+  "devices": [
+    {
+      "id": "desktop",
+      "label": "Desktop Chromium 1366x768",
+      "browser": "chromium",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "is_mobile": false
+    },
+    {
+      "id": "mobile",
+      "label": "Mobile emulation 390x844 (Chromium, touch)",
+      "browser": "chromium",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "is_mobile": true,
+      "has_touch": true
+    }
+  ],
+  "auth": {
+    "method": "none"
+  },
+  "allowed_actions": {
+    "form_submission": "local-demo-only",
+    "submit_paths": [
+      "/api/contact"
+    ],
+    "notes": "The demo contact endpoint keeps nothing and sends nothing. No other POST is allowed."
+  },
+  "limits": {
+    "timeout_ms": 8000,
+    "retries": 0,
+    "max_cases": 40,
+    "max_minutes": 15
+  },
+  "output": {
+    "dir": "qa-output",
+    "formats": [
+      "md",
+      "json",
+      "csv"
+    ],
+    "output_language": "en"
+  },
+  "assumptions": [
+    "Expected localized strings and URL correspondences come from this config; they stand in for the product specification.",
+    "Brand and product names listed in keep_untranslated are intentionally identical in both languages."
+  ],
+  "journeys": [
+    {
+      "id": "J01",
+      "title": "Open the home page in the requested language",
+      "priority": "P1",
+      "release_critical": true,
+      "device": "desktop",
+      "languages": [
+        "en",
+        "fr"
+      ],
+      "checks": [
+        "navigation",
+        "multilingual-structure"
+      ],
+      "preconditions": [
+        "None"
+      ],
+      "expected": "Home page loads with HTTP 200, the right <html lang>, the localized title and hreflang alternates for both languages.",
+      "steps": [
+        {
+          "action": "goto",
+          "url": "{{url.home}}"
+        },
+        {
+          "action": "expect_status",
+          "in": [
+            200
+          ]
+        },
+        {
+          "action": "expect_lang",
+          "value": "{{lang}}"
+        },
+        {
+          "action": "expect_text",
+          "selector": "h1",
+          "text": "{{s.home_title}}",
+          "exact": true
+        },
+        {
+          "action": "expect_attr",
+          "selector": "link[rel=alternate][hreflang=en]",
+          "attr": "href",
+          "value": "/en/",
+          "soft": true
+        },
+        {
+          "action": "expect_attr",
+          "selector": "link[rel=alternate][hreflang=fr]",
+          "attr": "href",
+          "value": "/fr/",
+          "soft": true
+        },
+        {
+          "action": "screenshot",
+          "name": "home"
+        }
+      ]
+    },
+    {
+      "id": "J02",
+      "title": "Follow the main navigation to an internal page",
+      "priority": "P1",
+      "release_critical": true,
+      "device": "desktop",
+      "languages": [
+        "en",
+        "fr"
+      ],
+      "checks": [
+        "navigation"
+      ],
+      "preconditions": [
+        "Start on the home page of the language under test"
+      ],
+      "expected": "The 'About' entry of the main navigation opens the localized About page.",
+      "steps": [
+        {
+          "action": "goto",
+          "url": "{{url.home}}"
+        },
+        {
+          "action": "click",
+          "role": "link",
+          "name": "{{s.nav_about}}",
+          "exact": true
+        },
+        {
+          "action": "expect_url",
+          "path": "{{url.about}}"
+        },
+        {
+          "action": "expect_text",
+          "selector": "h1",
+          "text": "{{s.about_title}}",
+          "exact": true
+        }
+      ]
+    },
+    {
+      "id": "J03",
+      "title": "Switch language from an internal page",
+      "priority": "P1",
+      "release_critical": true,
+      "device": "desktop",
+      "languages": [
+        "en",
+        "fr"
+      ],
+      "checks": [
+        "language-switch"
+      ],
+      "preconditions": [
+        "Open the About page directly in the language under test"
+      ],
+      "expected": "The language switcher opens the same page (About) in the other language.",
+      "steps": [
+        {
+          "action": "goto",
+          "url": "{{url.about}}"
+        },
+        {
+          "action": "click",
+          "selector": "#lang-switch"
+        },
+        {
+          "action": "expect_url",
+          "path": "{{url.about_counterpart}}"
+        },
+        {
+          "action": "expect_lang",
+          "value": "{{s.counterpart_lang}}"
+        }
+      ]
+    },
+    {
+      "id": "J04",
+      "title": "Follow a legacy redirect and keep the language",
+      "priority": "P1",
+      "release_critical": true,
+      "device": "desktop",
+      "languages": [
+        "en",
+        "fr"
+      ],
+      "checks": [
+        "language-preservation",
+        "navigation"
+      ],
+      "preconditions": [
+        "Legacy offers URL of the language under test"
+      ],
+      "expected": "The legacy URL redirects to the current offer page in the same language.",
+      "steps": [
+        {
+          "action": "goto",
+          "url": "{{url.legacy_offers}}"
+        },
+        {
+          "action": "expect_url",
+          "path": "{{url.offer}}"
+        },
+        {
+          "action": "expect_lang",
+          "value": "{{lang}}"
+        }
+      ]
+    },
+    {
+      "id": "J05",
+      "title": "Search with results",
+      "priority": "P2",
+      "release_critical": false,
+      "device": "desktop",
+      "languages": [
+        "en",
+        "fr"
+      ],
+      "checks": [
+        "journey"
+      ],
+      "preconditions": [
+        "Search page of the language under test"
+      ],
+      "expected": "Searching a known term lists the matching localized product.",
+      "steps": [
+        {
+          "action": "goto",
+          "url": "{{url.search}}"
+        },
+        {
+          "action": "fill",
+          "selector": "#q",
+          "value": "{{s.search_hit_term}}"
+        },
+        {
+          "action": "press",
+          "key": "Enter"
+        },
+        {
+          "action": "expect_text",
+          "selector": "#results",
+          "text": "{{s.search_hit_product}}"
+        }
+      ]
+    },
+    {
+      "id": "J06",
+      "title": "Search without results shows an empty state",
+      "priority": "P2",
+      "release_critical": false,
+      "device": "desktop",
+      "languages": [
+        "en",
+        "fr"
+      ],
+      "checks": [
+        "journey",
+        "localization"
+      ],
+      "preconditions": [
+        "Search page of the language under test"
+      ],
+      "expected": "An unknown term shows a localized empty-state message, no result list.",
+      "steps": [
+        {
+          "action": "goto",
+          "url": "{{url.search}}"
+        },
+        {
+          "action": "fill",
+          "selector": "#q",
+          "value": "{{s.search_miss_term}}"
+        },
+        {
+          "action": "press",
+          "key": "Enter"
+        },
+        {
+          "action": "expect_visible",
+          "selector": "#empty-state"
+        },
+        {
+          "action": "expect_text",
+          "selector": "#empty-state",
+          "text": "{{s.no_results}}"
+        }
+      ]
+    },
+    {
+      "id": "J07",
+      "title": "Submit an invalid form and check the error messages",
+      "priority": "P1",
+      "release_critical": false,
+      "device": "desktop",
+      "languages": [
+        "en",
+        "fr"
+      ],
+      "checks": [
+        "journey",
+        "localization"
+      ],
+      "preconditions": [
+        "Contact page of the language under test"
+      ],
+      "test_data": {
+        "bad_email": "not-an-email"
+      },
+      "expected": "Submission is refused and localized errors are shown for the empty name and the invalid email.",
+      "steps": [
+        {
+          "action": "goto",
+          "url": "{{url.contact}}"
+        },
+        {
+          "action": "fill",
+          "selector": "#email",
+          "value": "{{data.bad_email}}"
+        },
+        {
+          "action": "click",
+          "selector": "#send"
+        },
+        {
+          "action": "expect_url",
+          "path": "{{url.contact}}"
+        },
+        {
+          "action": "expect_visible",
+          "selector": "#name-error"
+        },
+        {
+          "action": "expect_text",
+          "selector": "#name-error",
+          "text": "{{s.required}}",
+          "exact": true,
+          "soft": true
+        },
+        {
+          "action": "expect_text",
+          "selector": "#email-error",
+          "text": "{{s.bad_email}}",
+          "exact": true,
+          "soft": true
+        }
+      ]
+    },
+    {
+      "id": "J08",
+      "title": "Fill the form with the keyboard and get a local confirmation",
+      "priority": "P1",
+      "release_critical": true,
+      "device": "desktop",
+      "languages": [
+        "en",
+        "fr"
+      ],
+      "checks": [
+        "journey",
+        "accessibility-basic"
+      ],
+      "preconditions": [
+        "Contact page of the language under test",
+        "Submission allowed: local demo endpoint only"
+      ],
+      "test_data": {
+        "name": "Alex Tester",
+        "email": "alex.tester@example.test",
+        "message": "Demo message, please ignore."
+      },
+      "expected": "Every field and the submit control are reachable with Tab; Enter submits; the localized confirmation page is shown.",
+      "steps": [
+        {
+          "action": "goto",
+          "url": "{{url.contact}}"
+        },
+        {
+          "action": "tab_until_focus",
+          "selector": "#name",
+          "max": 15
+        },
+        {
+          "action": "type",
+          "value": "{{data.name}}"
+        },
+        {
+          "action": "tab_until_focus",
+          "selector": "#email",
+          "max": 3
+        },
+        {
+          "action": "type",
+          "value": "{{data.email}}"
+        },
+        {
+          "action": "tab_until_focus",
+          "selector": "#message",
+          "max": 3
+        },
+        {
+          "action": "type",
+          "value": "{{data.message}}"
+        },
+        {
+          "action": "tab_until_focus",
+          "selector": "#send",
+          "max": 5
+        },
+        {
+          "action": "press",
+          "key": "Enter"
+        },
+        {
+          "action": "expect_url",
+          "path": "{{url.thanks}}"
+        },
+        {
+          "action": "expect_text",
+          "selector": "h1",
+          "text": "{{s.thanks_title}}",
+          "exact": true
+        }
+      ]
+    },
+    {
+      "id": "J09",
+      "title": "Open, use and close the menu on mobile",
+      "priority": "P1",
+      "release_critical": true,
+      "device": "mobile",
+      "languages": [
+        "en",
+        "fr"
+      ],
+      "checks": [
+        "display",
+        "navigation"
+      ],
+      "preconditions": [
+        "Home page on the mobile profile"
+      ],
+      "expected": "The menu button opens the navigation, a visible close control dismisses it, and a menu link navigates.",
+      "steps": [
+        {
+          "action": "goto",
+          "url": "{{url.home}}"
+        },
+        {
+          "action": "expect_hidden",
+          "selector": "#main-nav"
+        },
+        {
+          "action": "click",
+          "selector": "#menu-toggle"
+        },
+        {
+          "action": "expect_visible",
+          "selector": "#main-nav"
+        },
+        {
+          "action": "expect_visible",
+          "selector": "#menu-close"
+        },
+        {
+          "action": "click",
+          "selector": "#menu-close"
+        },
+        {
+          "action": "expect_hidden",
+          "selector": "#main-nav"
+        },
+        {
+          "action": "click",
+          "selector": "#menu-toggle"
+        },
+        {
+          "action": "click",
+          "role": "link",
+          "name": "{{s.nav_offers}}",
+          "exact": true
+        },
+        {
+          "action": "expect_url",
+          "path": "{{url.offer}}"
+        }
+      ]
+    },
+    {
+      "id": "J10",
+      "title": "View a localized offer on mobile",
+      "priority": "P2",
+      "release_critical": false,
+      "device": "mobile",
+      "languages": [
+        "en",
+        "fr"
+      ],
+      "checks": [
+        "localization",
+        "display"
+      ],
+      "preconditions": [
+        "Offer page on the mobile profile"
+      ],
+      "expected": "Badge, price and date are localized, the page has no horizontal overflow and the call to action is visible.",
+      "steps": [
+        {
+          "action": "goto",
+          "url": "{{url.offer}}"
+        },
+        {
+          "action": "expect_lang",
+          "value": "{{lang}}"
+        },
+        {
+          "action": "expect_text",
+          "selector": "#offer-badge",
+          "text": "{{s.offer_badge}}",
+          "exact": true,
+          "soft": true
+        },
+        {
+          "action": "expect_text",
+          "selector": "#offer-price",
+          "text": "{{s.offer_price}}",
+          "exact": true,
+          "soft": true
+        },
+        {
+          "action": "expect_text",
+          "selector": "#offer-date",
+          "text": "{{s.offer_date}}",
+          "exact": true,
+          "soft": true
+        },
+        {
+          "action": "expect_no_horizontal_overflow",
+          "soft": true
+        },
+        {
+          "action": "expect_visible",
+          "selector": "#offer-cta",
+          "soft": true
+        },
+        {
+          "action": "screenshot",
+          "name": "offer",
+          "full_page": true
+        }
+      ]
+    }
+  ]
+}

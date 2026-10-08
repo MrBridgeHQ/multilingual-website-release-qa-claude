@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0",
+  "campaign": {
+    "id": "NEG-auth",
+    "name": "Northwind Outdoor demo - FR/EN release QA",
+    "label": null,
+    "environment": "local demo (tests/demo-site/server.py on 127.0.0.1:8765)",
+    "started_at": "2026-10-08T14:49:09.185Z",
+    "finished_at": "2026-10-08T14:49:09.301Z",
+    "output_language": "en"
+  },
+  "scope": {
+    "start_url": "http://127.0.0.1:8766/en/",
+    "allowed_origins": [
+      "http://127.0.0.1:8766"
+    ],
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "devices": [
+      "desktop",
+      "mobile"
+    ],
+    "journeys": [
+      {
+        "id": "J11",
+        "title": "Open the account page",
+        "release_critical": true,
+        "priority": "P1"
+      }
+    ],
+    "filters": {
+      "journeys": null,
+      "languages": null
+    }
+  },
+  "environment": {
+    "runner": "run_journeys.cjs 1.0.0",
+    "browser": "chromium",
+    "browser_version": "141.0.7390.37",
+    "node": "v22.22.0",
+    "platform": "linux",
+    "browser_error": null
+  },
+  "capabilities": {
+    "page_extraction": true,
+    "click": true,
+    "typing": true,
+    "screenshots": true,
+    "network_observation": true,
+    "console_capture": true,
+    "traces": false,
+    "geo_verification": false,
+    "real_device": false,
+    "notes": [
+      "mobile profiles are Chromium device emulation, not real phones"
+    ]
+  },
+  "assumptions": [
+    "Expected localized strings and URL correspondences come from this config; they stand in for the product specification.",
+    "Brand and product names listed in keep_untranslated are intentionally identical in both languages."
+  ],
+  "cases": [
+    {
+      "journey_id": "J11",
+      "title": "Open the account page",
+      "language": "en",
+      "device": "desktop",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "emulated_mobile": false,
+      "country": null,
+      "priority": "P1",
+      "release_critical": true,
+      "preconditions": [],
+      "expected": "Account dashboard is shown.",
+      "url_start": "http://127.0.0.1:8766/en/account",
+      "checks": [],
+      "case_id": "J11-en-desktop",
+      "status": "BLOCKED",
+      "reason": "HTTP 401 on /en/account: authentication or authorization required",
+      "started_at": "2026-10-08T14:49:09.185Z",
+      "finished_at": "2026-10-08T14:49:09.277Z",
+      "url_final": "http://127.0.0.1:8766/en/account",
+      "steps": [
+        {
+          "index": 1,
+          "action": "goto",
+          "description": "goto(url=\"/en/account\")",
+          "status": "BLOCKED",
+          "detail": "HTTP 401 on /en/account: authentication or authorization required"
+        },
+        {
+          "index": 2,
+          "action": "expect_status",
+          "description": "expect_status(in=[200])",
+          "status": "NOT_RUN",
+          "detail": "not executed: an earlier step ended the journey"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "screenshot",
+          "path": "evidence/J11-en-desktop/final-attempt1.png",
+          "step": "final"
+        },
+        {
+          "type": "log",
+          "path": "evidence/J11-en-desktop/log-attempt1.json",
+          "step": "final"
+        }
+      ],
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+      ],
+      "failed_requests": [
+        {
+          "url": "http://127.0.0.1:8766/en/account",
+          "method": "GET",
+          "status": 401
+        }
+      ],
+      "blocked_requests": [],
+      "attempts": 1,
+      "reproduction": null,
+      "limitations": []
+    }
+  ],
+  "geo_checks": [],
+  "observations": [],
+  "tickets": [],
+  "summary": {
+    "counts": {
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 1,
+      "NOT_RUN": 0,
+      "NOT_APPLICABLE": 0,
+      "PLANNED": 1,
+      "EXECUTED": 0
+    },
+    "verdict": "NO_VERDICT",
+    "verdict_reason": "no check was executed; nothing can be validated",
+    "release_critical": {
+      "passed": 0,
+      "total": 1
+    },
+    "tickets_by_severity": {
+      "BLOCKER": 0,
+      "MAJOR": 0,
+      "MINOR": 0,
+      "COSMETIC": 0
+    },
+    "missing_evidence": [],
+    "draft": false
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "passed": 12,
+  "total": 12,
+  "checks": [
+    {
+      "name": "browser unavailable",
+      "ok": true,
+      "detail": "statuses={'BLOCKED'}, verdict=NO_VERDICT, reason=browser unavailable: browserType.launch: Failed to launch chromium bec"
+    },
+    {
+      "name": "authentication blocking",
+      "ok": true,
+      "detail": "status=BLOCKED, reason=HTTP 401 on /en/account: authentication or authorization required"
+    },
+    {
+      "name": "auth blocking verdict",
+      "ok": true,
+      "detail": "verdict=NO_VERDICT"
+    },
+    {
+      "name": "tool error",
+      "ok": true,
+      "detail": "statuses=['BLOCKED', 'BLOCKED'], reason=tool could not perform step 1: page.goto: net::ERR_CONNECTION_REFUSED at http://"
+    },
+    {
+      "name": "ambiguous expectation",
+      "ok": true,
+      "detail": "questions=1, warnings=1"
+    },
+    {
+      "name": "geo without proof",
+      "ok": true,
+      "detail": "geo=[('DE', 'NOT_RUN'), ('CA', 'NOT_RUN')]"
+    },
+    {
+      "name": "geo PASS without egress proof rejected",
+      "ok": true,
+      "detail": "ERROR: geo_checks[0]: PASS/FAIL requires 'egress_proof' tied to the same network context"
+    },
+    {
+      "name": "FAIL case without ticket rejected",
+      "ok": true,
+      "detail": "ERROR: FAIL cases without ticket or observation: J02-fr-desktop"
+    },
+    {
+      "name": "TODO ticket rejected",
+      "ok": true,
+      "detail": "ERROR: tickets[0]: severity must be one of ['BLOCKER', 'MAJOR', 'MINOR', 'COSMETIC']"
+    },
+    {
+      "name": "LOW-confidence BLOCKER rejected",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "PASS case with a failed step rejected",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "partial retest",
+      "ok": true,
+      "detail": "J02-fr=STILL_FAILING, others=['NOT_RETESTED']"
+    }
+  ]
+}

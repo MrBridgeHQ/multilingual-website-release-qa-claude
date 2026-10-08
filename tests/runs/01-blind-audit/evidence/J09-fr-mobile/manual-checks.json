@@ -1,0 +1,7 @@
+{
+ "fr_menu_close_visible": false,
+ "fr_menu_toggle_visible_when_open": true,
+ "fr_nav_visible_after_escape": true,
+ "fr_menu_link_offres_path": "/fr/offres/premium",
+ "fr_nav_visible_after_link": false
+}

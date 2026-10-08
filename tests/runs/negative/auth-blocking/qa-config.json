@@ -1,0 +1,177 @@
+{
+  "campaign": {
+    "id": "NEG-auth",
+    "name": "Northwind Outdoor demo - FR/EN release QA",
+    "environment": "local demo (tests/demo-site/server.py on 127.0.0.1:8765)"
+  },
+  "target": {
+    "start_url": "http://127.0.0.1:8766/en/",
+    "allowed_origins": [
+      "http://127.0.0.1:8766"
+    ],
+    "allowed_paths": [
+      "/en/",
+      "/fr/"
+    ],
+    "excluded_paths": [],
+    "timezone": "Europe/Paris"
+  },
+  "languages": [
+    {
+      "code": "en",
+      "label": "English",
+      "locale": "en-US",
+      "urls": {
+        "home": "/en/",
+        "about": "/en/about",
+        "about_counterpart": "/fr/a-propos",
+        "offer": "/en/offers/premium",
+        "legacy_offers": "/en/old-offers",
+        "search": "/en/search",
+        "contact": "/en/contact",
+        "thanks": "/en/contact/thanks"
+      },
+      "strings": {
+        "home_title": "Welcome to Northwind Outdoor",
+        "nav_about": "About",
+        "nav_offers": "Offers",
+        "about_title": "About us",
+        "counterpart_lang": "fr",
+        "search_hit_term": "backpack",
+        "search_hit_product": "Alpine backpack 30 L",
+        "search_miss_term": "zzqx-no-match",
+        "no_results": "No results for",
+        "required": "This field is required.",
+        "bad_email": "Enter a valid email address.",
+        "thanks_title": "Thank you",
+        "offer_badge": "Limited offer",
+        "offer_price": "€1,290.00",
+        "offer_date": "Valid until 12/31/2026"
+      },
+      "keep_untranslated": [
+        "Northwind Outdoor",
+        "Gore-Tex",
+        "Contact",
+        "Menu",
+        "Message"
+      ]
+    },
+    {
+      "code": "fr",
+      "label": "Français",
+      "locale": "fr-FR",
+      "urls": {
+        "home": "/fr/",
+        "about": "/fr/a-propos",
+        "about_counterpart": "/en/about",
+        "offer": "/fr/offres/premium",
+        "legacy_offers": "/fr/anciennes-offres",
+        "search": "/fr/recherche",
+        "contact": "/fr/contact",
+        "thanks": "/fr/contact/merci"
+      },
+      "strings": {
+        "home_title": "Bienvenue chez Northwind Outdoor",
+        "nav_about": "À propos",
+        "nav_offers": "Offres",
+        "about_title": "Qui sommes-nous",
+        "counterpart_lang": "en",
+        "search_hit_term": "trail",
+        "search_hit_product": "Chaussures de trail",
+        "search_miss_term": "zzqx-sans-resultat",
+        "no_results": "Aucun résultat pour",
+        "required": "Ce champ est obligatoire.",
+        "bad_email": "Saisissez une adresse e-mail valide.",
+        "thanks_title": "Merci",
+        "offer_badge": "Offre limitée",
+        "offer_price": "1 290,00 €",
+        "offer_date": "Valable jusqu'au 31/12/2026"
+      },
+      "keep_untranslated": [
+        "Northwind Outdoor",
+        "Gore-Tex",
+        "Contact",
+        "Menu",
+        "Message"
+      ]
+    }
+  ],
+  "countries": [],
+  "devices": [
+    {
+      "id": "desktop",
+      "label": "Desktop Chromium 1366x768",
+      "browser": "chromium",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "is_mobile": false
+    },
+    {
+      "id": "mobile",
+      "label": "Mobile emulation 390x844 (Chromium, touch)",
+      "browser": "chromium",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "is_mobile": true,
+      "has_touch": true
+    }
+  ],
+  "auth": {
+    "method": "none"
+  },
+  "allowed_actions": {
+    "form_submission": "local-demo-only",
+    "submit_paths": [
+      "/api/contact"
+    ],
+    "notes": "The demo contact endpoint keeps nothing and sends nothing. No other POST is allowed."
+  },
+  "limits": {
+    "timeout_ms": 8000,
+    "retries": 0,
+    "max_cases": 40,
+    "max_minutes": 15
+  },
+  "output": {
+    "dir": "qa-output",
+    "formats": [
+      "md",
+      "json",
+      "csv"
+    ],
+    "output_language": "en"
+  },
+  "assumptions": [
+    "Expected localized strings and URL correspondences come from this config; they stand in for the product specification.",
+    "Brand and product names listed in keep_untranslated are intentionally identical in both languages."
+  ],
+  "journeys": [
+    {
+      "id": "J11",
+      "title": "Open the account page",
+      "priority": "P1",
+      "release_critical": true,
+      "device": "desktop",
+      "languages": [
+        "en"
+      ],
+      "expected": "Account dashboard is shown.",
+      "steps": [
+        {
+          "action": "goto",
+          "url": "/en/account"
+        },
+        {
+          "action": "expect_status",
+          "in": [
+            200
+          ]
+        }
+      ]
+    }
+  ]
+}

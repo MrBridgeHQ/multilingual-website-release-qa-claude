@@ -1,0 +1,13 @@
+{
+  "console_errors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "failed_requests": [
+    {
+      "url": "http://127.0.0.1:8766/fr/apropos",
+      "method": "GET",
+      "status": 404
+    }
+  ],
+  "blocked_requests": []
+}

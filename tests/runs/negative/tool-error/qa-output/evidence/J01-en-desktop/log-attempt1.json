@@ -1,0 +1,11 @@
+{
+  "console_errors": [],
+  "failed_requests": [
+    {
+      "url": "http://127.0.0.1:8799/en/",
+      "method": "GET",
+      "error": "net::ERR_CONNECTION_REFUSED"
+    }
+  ],
+  "blocked_requests": []
+}

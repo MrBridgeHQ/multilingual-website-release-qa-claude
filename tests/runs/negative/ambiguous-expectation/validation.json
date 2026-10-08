@@ -1,0 +1,21 @@
+{
+  "valid": true,
+  "errors": [],
+  "warnings": [
+    "journey J12: no expectation step; it can only ever PASS by default, which proves nothing"
+  ],
+  "product_questions": [
+    "journey J12: no 'expected' result. Record an explicit assumption or ask the product owner; do not invent a requirement."
+  ],
+  "cases_planned": 1,
+  "matrix": [
+    {
+      "case_id": "J12-en-desktop",
+      "journey": "J12",
+      "language": "en",
+      "device": "desktop",
+      "release_critical": false,
+      "priority": "P2"
+    }
+  ]
+}

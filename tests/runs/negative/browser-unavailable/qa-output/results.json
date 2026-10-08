@@ -1,0 +1,455 @@
+{
+  "schema_version": "1.0",
+  "campaign": {
+    "id": "NEG-browser",
+    "name": "Northwind Outdoor demo - FR/EN release QA",
+    "label": null,
+    "environment": "local demo (tests/demo-site/server.py on 127.0.0.1:8765)",
+    "started_at": "2026-10-08T14:49:08.650Z",
+    "finished_at": "2026-10-08T14:49:08.651Z",
+    "output_language": "en"
+  },
+  "scope": {
+    "start_url": "http://127.0.0.1:8766/en/",
+    "allowed_origins": [
+      "http://127.0.0.1:8766"
+    ],
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "devices": [
+      "desktop",
+      "mobile"
+    ],
+    "journeys": [
+      {
+        "id": "J01",
+        "title": "Open the home page in the requested language",
+        "release_critical": true,
+        "priority": "P1"
+      },
+      {
+        "id": "J02",
+        "title": "Follow the main navigation to an internal page",
+        "release_critical": true,
+        "priority": "P1"
+      },
+      {
+        "id": "J03",
+        "title": "Switch language from an internal page",
+        "release_critical": true,
+        "priority": "P1"
+      },
+      {
+        "id": "J04",
+        "title": "Follow a legacy redirect and keep the language",
+        "release_critical": true,
+        "priority": "P1"
+      },
+      {
+        "id": "J05",
+        "title": "Search with results",
+        "release_critical": false,
+        "priority": "P2"
+      },
+      {
+        "id": "J06",
+        "title": "Search without results shows an empty state",
+        "release_critical": false,
+        "priority": "P2"
+      },
+      {
+        "id": "J07",
+        "title": "Submit an invalid form and check the error messages",
+        "release_critical": false,
+        "priority": "P1"
+      },
+      {
+        "id": "J08",
+        "title": "Fill the form with the keyboard and get a local confirmation",
+        "release_critical": true,
+        "priority": "P1"
+      },
+      {
+        "id": "J09",
+        "title": "Open, use and close the menu on mobile",
+        "release_critical": true,
+        "priority": "P1"
+      },
+      {
+        "id": "J10",
+        "title": "View a localized offer on mobile",
+        "release_critical": false,
+        "priority": "P2"
+      }
+    ],
+    "filters": {
+      "journeys": [
+        "J01",
+        "J02"
+      ],
+      "languages": null
+    }
+  },
+  "environment": {
+    "runner": "run_journeys.cjs 1.0.0",
+    "browser": "chromium",
+    "browser_version": null,
+    "node": "v22.22.0",
+    "platform": "linux",
+    "browser_error": "browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+  },
+  "capabilities": {
+    "page_extraction": false,
+    "click": false,
+    "typing": false,
+    "screenshots": false,
+    "network_observation": false,
+    "console_capture": false,
+    "traces": false,
+    "geo_verification": false,
+    "real_device": false,
+    "notes": [
+      "browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+    ]
+  },
+  "assumptions": [
+    "Expected localized strings and URL correspondences come from this config; they stand in for the product specification.",
+    "Brand and product names listed in keep_untranslated are intentionally identical in both languages."
+  ],
+  "cases": [
+    {
+      "journey_id": "J01",
+      "title": "Open the home page in the requested language",
+      "language": "en",
+      "device": "desktop",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "emulated_mobile": false,
+      "country": null,
+      "priority": "P1",
+      "release_critical": true,
+      "preconditions": [
+        "None"
+      ],
+      "expected": "Home page loads with HTTP 200, the right <html lang>, the localized title and hreflang alternates for both languages.",
+      "url_start": "http://127.0.0.1:8766/en/",
+      "checks": [
+        "navigation",
+        "multilingual-structure"
+      ],
+      "case_id": "J01-en-desktop",
+      "status": "BLOCKED",
+      "reason": "browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium",
+      "started_at": "2026-10-08T14:49:08.650Z",
+      "finished_at": "2026-10-08T14:49:08.650Z",
+      "url_final": null,
+      "evidence": [],
+      "console_errors": [],
+      "failed_requests": [],
+      "blocked_requests": [],
+      "steps": [
+        {
+          "index": 1,
+          "action": "goto",
+          "description": "goto(url=\"{{url.home}}\")",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 2,
+          "action": "expect_status",
+          "description": "expect_status(in=[200])",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 3,
+          "action": "expect_lang",
+          "description": "expect_lang(value=\"{{lang}}\")",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 4,
+          "action": "expect_text",
+          "description": "expect_text(selector=\"h1\", text=\"{{s.home_title}}\", exact=true)",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 5,
+          "action": "expect_attr",
+          "description": "expect_attr(selector=\"link[rel=alternate][hreflang=en]\", attr=\"href\", value=\"/en/\", soft=true)",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 6,
+          "action": "expect_attr",
+          "description": "expect_attr(selector=\"link[rel=alternate][hreflang=fr]\", attr=\"href\", value=\"/fr/\", soft=true)",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 7,
+          "action": "screenshot",
+          "description": "screenshot(name=\"home\")",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        }
+      ],
+      "attempts": 0,
+      "reproduction": null,
+      "limitations": []
+    },
+    {
+      "journey_id": "J01",
+      "title": "Open the home page in the requested language",
+      "language": "fr",
+      "device": "desktop",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "emulated_mobile": false,
+      "country": null,
+      "priority": "P1",
+      "release_critical": true,
+      "preconditions": [
+        "None"
+      ],
+      "expected": "Home page loads with HTTP 200, the right <html lang>, the localized title and hreflang alternates for both languages.",
+      "url_start": "http://127.0.0.1:8766/fr/",
+      "checks": [
+        "navigation",
+        "multilingual-structure"
+      ],
+      "case_id": "J01-fr-desktop",
+      "status": "BLOCKED",
+      "reason": "browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium",
+      "started_at": "2026-10-08T14:49:08.651Z",
+      "finished_at": "2026-10-08T14:49:08.651Z",
+      "url_final": null,
+      "evidence": [],
+      "console_errors": [],
+      "failed_requests": [],
+      "blocked_requests": [],
+      "steps": [
+        {
+          "index": 1,
+          "action": "goto",
+          "description": "goto(url=\"{{url.home}}\")",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 2,
+          "action": "expect_status",
+          "description": "expect_status(in=[200])",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 3,
+          "action": "expect_lang",
+          "description": "expect_lang(value=\"{{lang}}\")",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 4,
+          "action": "expect_text",
+          "description": "expect_text(selector=\"h1\", text=\"{{s.home_title}}\", exact=true)",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 5,
+          "action": "expect_attr",
+          "description": "expect_attr(selector=\"link[rel=alternate][hreflang=en]\", attr=\"href\", value=\"/en/\", soft=true)",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 6,
+          "action": "expect_attr",
+          "description": "expect_attr(selector=\"link[rel=alternate][hreflang=fr]\", attr=\"href\", value=\"/fr/\", soft=true)",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 7,
+          "action": "screenshot",
+          "description": "screenshot(name=\"home\")",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        }
+      ],
+      "attempts": 0,
+      "reproduction": null,
+      "limitations": []
+    },
+    {
+      "journey_id": "J02",
+      "title": "Follow the main navigation to an internal page",
+      "language": "en",
+      "device": "desktop",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "emulated_mobile": false,
+      "country": null,
+      "priority": "P1",
+      "release_critical": true,
+      "preconditions": [
+        "Start on the home page of the language under test"
+      ],
+      "expected": "The 'About' entry of the main navigation opens the localized About page.",
+      "url_start": "http://127.0.0.1:8766/en/",
+      "checks": [
+        "navigation"
+      ],
+      "case_id": "J02-en-desktop",
+      "status": "BLOCKED",
+      "reason": "browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium",
+      "started_at": "2026-10-08T14:49:08.651Z",
+      "finished_at": "2026-10-08T14:49:08.651Z",
+      "url_final": null,
+      "evidence": [],
+      "console_errors": [],
+      "failed_requests": [],
+      "blocked_requests": [],
+      "steps": [
+        {
+          "index": 1,
+          "action": "goto",
+          "description": "goto(url=\"{{url.home}}\")",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 2,
+          "action": "click",
+          "description": "click(role=\"link\", name=\"{{s.nav_about}}\", exact=true)",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 3,
+          "action": "expect_url",
+          "description": "expect_url(path=\"{{url.about}}\")",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 4,
+          "action": "expect_text",
+          "description": "expect_text(selector=\"h1\", text=\"{{s.about_title}}\", exact=true)",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        }
+      ],
+      "attempts": 0,
+      "reproduction": null,
+      "limitations": []
+    },
+    {
+      "journey_id": "J02",
+      "title": "Follow the main navigation to an internal page",
+      "language": "fr",
+      "device": "desktop",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "emulated_mobile": false,
+      "country": null,
+      "priority": "P1",
+      "release_critical": true,
+      "preconditions": [
+        "Start on the home page of the language under test"
+      ],
+      "expected": "The 'About' entry of the main navigation opens the localized About page.",
+      "url_start": "http://127.0.0.1:8766/fr/",
+      "checks": [
+        "navigation"
+      ],
+      "case_id": "J02-fr-desktop",
+      "status": "BLOCKED",
+      "reason": "browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium",
+      "started_at": "2026-10-08T14:49:08.651Z",
+      "finished_at": "2026-10-08T14:49:08.651Z",
+      "url_final": null,
+      "evidence": [],
+      "console_errors": [],
+      "failed_requests": [],
+      "blocked_requests": [],
+      "steps": [
+        {
+          "index": 1,
+          "action": "goto",
+          "description": "goto(url=\"{{url.home}}\")",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 2,
+          "action": "click",
+          "description": "click(role=\"link\", name=\"{{s.nav_about}}\", exact=true)",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 3,
+          "action": "expect_url",
+          "description": "expect_url(path=\"{{url.about}}\")",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        },
+        {
+          "index": 4,
+          "action": "expect_text",
+          "description": "expect_text(selector=\"h1\", text=\"{{s.about_title}}\", exact=true)",
+          "status": "NOT_RUN",
+          "detail": "not executed: browser unavailable: browserType.launch: Failed to launch chromium because executable doesn't exist at /nonexistent/chromium"
+        }
+      ],
+      "attempts": 0,
+      "reproduction": null,
+      "limitations": []
+    }
+  ],
+  "geo_checks": [],
+  "observations": [],
+  "tickets": [],
+  "summary": {
+    "counts": {
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 4,
+      "NOT_RUN": 0,
+      "NOT_APPLICABLE": 0,
+      "PLANNED": 4,
+      "EXECUTED": 0
+    },
+    "verdict": "NO_VERDICT",
+    "verdict_reason": "no check was executed; nothing can be validated",
+    "release_critical": {
+      "passed": 0,
+      "total": 4
+    },
+    "tickets_by_severity": {
+      "BLOCKER": 0,
+      "MAJOR": 0,
+      "MINOR": 0,
+      "COSMETIC": 0
+    },
+    "missing_evidence": [],
+    "draft": false
+  }
+}
