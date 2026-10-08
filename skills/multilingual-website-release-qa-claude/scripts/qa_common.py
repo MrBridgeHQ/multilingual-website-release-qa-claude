@@ -1,4 +1,4 @@
-"""Shared constants and validators for recette-web-multilingue scripts (stdlib only)."""
+"""Shared constants and validators for multilingual-website-release-qa-claude scripts (stdlib only)."""
 import json
 import re
 

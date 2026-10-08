@@ -1,6 +1,6 @@
 # Release QA report - Northwind Outdoor demo - FR/EN release QA
 
-Campaign `NEG-retest` · 2026-10-08T14:49:15.359Z → 2026-10-08T14:49:18.567Z
+Campaign `NEG-retest` · 2026-10-08T16:46:35.592Z → 2026-10-08T16:46:38.817Z
 
 ## 1. Scope
 
@@ -89,7 +89,7 @@ Case details (status, reason, final URL):
 - [ ] Case J02-fr-desktop passes on re-run with no other case regressing.
 
 - Retest procedure: node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J02 --languages fr, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.
-- Retest: {'date': '2026-10-08T14:49:18+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J02-fr-desktop': 'FAIL'}}
+- Retest: {'date': '2026-10-08T16:46:38+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J02-fr-desktop': 'FAIL'}}
 
 ### TCK-J03-en-desktop - [EN][desktop] About page: language switcher opens the French home page instead of /fr/a-propos
 
@@ -120,7 +120,7 @@ Case details (status, reason, final URL):
 - [ ] Case J03-en-desktop passes on re-run with no other case regressing.
 
 - Retest procedure: node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J03 --languages en, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.
-- Retest: {'date': '2026-10-08T14:49:18+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J03-en-desktop': 'NOT_RUN'}}
+- Retest: {'date': '2026-10-08T16:46:38+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J03-en-desktop': 'NOT_RUN'}}
 
 ### TCK-J04-en-desktop - [EN][desktop] Legacy URL /en/old-offers redirects to the French offer page /fr/offres/premium
 
@@ -150,7 +150,7 @@ Case details (status, reason, final URL):
 - [ ] Case J04-en-desktop passes on re-run with no other case regressing.
 
 - Retest procedure: node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J04 --languages en, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.
-- Retest: {'date': '2026-10-08T14:49:18+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J04-en-desktop': 'NOT_RUN'}}
+- Retest: {'date': '2026-10-08T16:46:38+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J04-en-desktop': 'NOT_RUN'}}
 
 ### TCK-J07-en-desktop - [EN][desktop] Contact form: required-field error messages are shown in French
 
@@ -183,7 +183,7 @@ Case details (status, reason, final URL):
 - [ ] Case J07-en-desktop passes on re-run with no other case regressing.
 
 - Retest procedure: node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J07 --languages en, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.
-- Retest: {'date': '2026-10-08T14:49:18+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J07-en-desktop': 'NOT_RUN'}}
+- Retest: {'date': '2026-10-08T16:46:38+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J07-en-desktop': 'NOT_RUN'}}
 
 ### TCK-J08-fr-desktop - [FR][desktop] Contact form: 'Envoyer le message' cannot be reached or activated with the keyboard
 
@@ -217,7 +217,7 @@ Case details (status, reason, final URL):
 - [ ] Case J08-fr-desktop passes on re-run with no other case regressing.
 
 - Retest procedure: node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J08 --languages fr, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.
-- Retest: {'date': '2026-10-08T14:49:18+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J08-fr-desktop': 'NOT_RUN'}}
+- Retest: {'date': '2026-10-08T16:46:38+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J08-fr-desktop': 'NOT_RUN'}}
 
 ### TCK-J09-fr-mobile - [FR][mobile] Mobile menu: no visible close control, menu covers the page and cannot be dismissed
 
@@ -248,7 +248,7 @@ Case details (status, reason, final URL):
 - [ ] Case J09-fr-mobile passes on re-run with no other case regressing.
 
 - Retest procedure: node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J09 --languages fr, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.
-- Retest: {'date': '2026-10-08T14:49:18+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J09-fr-mobile': 'NOT_RUN'}}
+- Retest: {'date': '2026-10-08T16:46:38+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J09-fr-mobile': 'NOT_RUN'}}
 
 ### TCK-J10-en-mobile - [EN][mobile] Offer page: badge shows French text 'Offre limitée' instead of 'Limited offer'
 
@@ -277,7 +277,7 @@ Case details (status, reason, final URL):
 - [ ] Case J10-en-mobile passes on re-run with no other case regressing.
 
 - Retest procedure: node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J10 --languages en, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.
-- Retest: {'date': '2026-10-08T14:49:18+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J10-en-mobile': 'NOT_RUN'}}
+- Retest: {'date': '2026-10-08T16:46:38+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J10-en-mobile': 'NOT_RUN'}}
 
 ### TCK-J10-fr-mobile - [FR][mobile] Offer page: specs table overflows horizontally at 390 px (page 660 px wide)
 
@@ -306,7 +306,7 @@ Case details (status, reason, final URL):
 - [ ] Case J10-fr-mobile passes on re-run with no other case regressing.
 
 - Retest procedure: node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J10 --languages fr, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.
-- Retest: {'date': '2026-10-08T14:49:18+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J10-fr-mobile': 'NOT_RUN'}}
+- Retest: {'date': '2026-10-08T16:46:38+00:00', 'campaign': 'NEG-retest', 'previous_status': 'OPEN', 'case_statuses': {'J10-fr-mobile': 'NOT_RUN'}}
 
 ## 7. Observations, product questions and assumptions
 

@@ -1,5 +1,7 @@
 # Validation of the skill
 
+Note: the skill was first built under the slug `recette-web-multilingue`, then renamed `multilingual-website-release-qa-claude`. The frozen runs in `runs/` keep the old name where it appears; after the rename, the negative suite (12/12), a guided run on the defective site (8/8 detected, 0/12 false failures) and the `claude -p` invocation were re-run under the new name.
+
 All runs use the local demo site `tests/demo-site/server.py` (fictional FR/EN shop, local endpoints only) and its config `tests/demo-site/qa-config.json`: 10 journeys x 2 languages = 20 cases, desktop profile (Chromium 1366x768) for J01-J08 and mobile emulation (390x844, touch) for J09-J10. Browser: Chromium 141 through Playwright 1.56 (Node 22). This is a validation prototype, not coverage of every device.
 
 The site contains 8 deterministic defects and 12 correct control cases. The answer key is `tests/oracle/expected-defects.json`; it was never given to the auditing agent.
@@ -46,13 +48,13 @@ Same config against `server.py --fixed`, then `retest_tickets.py` on the blind a
 
 ## 5. Installation check
 
-With the skill linked into `~/.claude/skills/recette-web-multilingue`, a real headless session (`claude -p`) invoked it through the Skill tool, reported its frontmatter name and base directory, and ran `validate_config.py` on the bundled example (`VALID: 6 case(s) planned (4 release-critical)`).
+With the skill linked into `~/.claude/skills/multilingual-website-release-qa-claude`, a real headless session (`claude -p`) invoked it through the Skill tool, reported its frontmatter name and base directory, and ran `validate_config.py` on the bundled example (`VALID: 6 case(s) planned (4 release-critical)`).
 
 ## Reproduce
 
 ```bash
 python3 tests/demo-site/server.py --port 8765 &            # add --fixed for the corrected site
-S=skills/recette-web-multilingue/scripts
+S=skills/multilingual-website-release-qa-claude/scripts
 node $S/run_journeys.cjs --config tests/demo-site/qa-config.json --out /tmp/qa-demo
 python3 $S/draft_tickets.py /tmp/qa-demo/results.json      # then complete the TODO fields
 python3 $S/build_outputs.py /tmp/qa-demo/results.json

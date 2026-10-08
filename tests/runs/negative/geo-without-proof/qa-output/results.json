@@ -5,8 +5,8 @@
     "name": "Northwind Outdoor demo - FR/EN release QA",
     "label": null,
     "environment": "local demo (tests/demo-site/server.py on 127.0.0.1:8765)",
-    "started_at": "2026-10-08T14:49:10.675Z",
-    "finished_at": "2026-10-08T14:49:10.910Z",
+    "started_at": "2026-10-08T16:46:30.828Z",
+    "finished_at": "2026-10-08T16:46:31.133Z",
     "output_language": "en"
   },
   "scope": {
@@ -145,8 +145,8 @@
       "case_id": "J01-en-desktop",
       "status": "PASS",
       "reason": null,
-      "started_at": "2026-10-08T14:49:10.675Z",
-      "finished_at": "2026-10-08T14:49:10.859Z",
+      "started_at": "2026-10-08T16:46:30.828Z",
+      "finished_at": "2026-10-08T16:46:31.089Z",
       "url_final": "http://127.0.0.1:8766/en/",
       "steps": [
         {

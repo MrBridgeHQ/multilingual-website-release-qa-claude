@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
- * Deterministic journey runner for recette-web-multilingue.
+ * Deterministic journey runner for multilingual-website-release-qa-claude.
  *
  * Executes the declarative journeys of a QA config with Playwright and writes
  * <out>/results.json plus <out>/evidence/. Tickets are NOT written here: the

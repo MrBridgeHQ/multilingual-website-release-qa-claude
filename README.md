@@ -1,6 +1,6 @@
-# recette-web-multilingue - Claude Code Agent Skill
+# multilingual-website-release-qa-claude - Claude Code Agent Skill
 
-**Multilingual Website Release QA.** An Agent Skill **for Claude Code** that actually runs the key user journeys of a multilingual website in every language and device profile, then turns each observed defect into a reproducible ticket with evidence, a justified severity and acceptance criteria.
+**Multilingual Website Release QA Claude.** An Agent Skill **for Claude Code** that actually runs the key user journeys of a multilingual website in every language and device profile, then turns each observed defect into a reproducible ticket with evidence, a justified severity and acceptance criteria.
 
 It tests what it can really observe, never claims more than the evidence shows, and writes tickets a developer can replay without a phone call.
 
@@ -37,18 +37,18 @@ Prerequisites: Python 3.9+ (scripts use the standard library only). For browser 
 ### Global (all projects), kept up to date with git
 
 ```bash
-git clone https://github.com/MrBridgeHQ/recette-web-multilingue-claude ~/src/recette-web-multilingue-claude
+git clone https://github.com/MrBridgeHQ/multilingual-website-release-qa-claude ~/src/multilingual-website-release-qa-claude
 mkdir -p ~/.claude/skills
-ln -s ~/src/recette-web-multilingue-claude/skills/recette-web-multilingue ~/.claude/skills/recette-web-multilingue
+ln -s ~/src/multilingual-website-release-qa-claude/skills/multilingual-website-release-qa-claude ~/.claude/skills/multilingual-website-release-qa-claude
 ```
 
-Update later with `git -C ~/src/recette-web-multilingue-claude pull`.
+Update later with `git -C ~/src/multilingual-website-release-qa-claude pull`.
 
 ### Project level, or copy instead of link
 
 ```bash
-cp -r skills/recette-web-multilingue /path/to/your-project/.claude/skills/   # project
-cp -r skills/recette-web-multilingue ~/.claude/skills/                       # global copy
+cp -r skills/multilingual-website-release-qa-claude /path/to/your-project/.claude/skills/   # project
+cp -r skills/multilingual-website-release-qa-claude ~/.claude/skills/                       # global copy
 ```
 
 ### Check that Claude Code loads it
@@ -56,15 +56,15 @@ cp -r skills/recette-web-multilingue ~/.claude/skills/                       # g
 Start a new session (skills are discovered at session start) and run:
 
 ```bash
-claude -p "Invoke the recette-web-multilingue skill, then run python3 <its base directory>/scripts/validate_config.py <its base directory>/assets/templates/qa-config.example.json | head -1"
+claude -p "Invoke the multilingual-website-release-qa-claude skill, then run python3 <its base directory>/scripts/validate_config.py <its base directory>/assets/templates/qa-config.example.json | head -1"
 ```
 
-Expected: the skill loads from `~/.claude/skills/recette-web-multilingue` and the last line reads `VALID: 6 case(s) planned (4 release-critical)`.
+Expected: the skill loads from `~/.claude/skills/multilingual-website-release-qa-claude` and the last line reads `VALID: 6 case(s) planned (4 release-critical)`.
 
 ## Use it
 
 ```text
-/recette-web-multilingue run release QA on https://staging.example.com in French and English, desktop and mobile
+/multilingual-website-release-qa-claude run release QA on https://staging.example.com in French and English, desktop and mobile
 ```
 
 or in plain language:
@@ -78,12 +78,12 @@ or in plain language:
 
 Template to adapt:
 
-> Use the recette-web-multilingue skill to run release QA on <URL_TO_TEST> in French and English, on desktop and mobile. Start by defining the priority user journeys, execute the available checks, and produce the audit report, structured results, and tickets with evidence.
+> Use the multilingual-website-release-qa-claude skill to run release QA on <URL_TO_TEST> in French and English, on desktop and mobile. Start by defining the priority user journeys, execute the available checks, and produce the audit report, structured results, and tickets with evidence.
 
 ### Under the hood
 
 ```bash
-S=~/.claude/skills/recette-web-multilingue/scripts
+S=~/.claude/skills/multilingual-website-release-qa-claude/scripts
 python3 $S/validate_config.py qa-config.json              # contract check + case matrix
 node    $S/run_journeys.cjs --config qa-config.json --out qa-output
 python3 $S/draft_tickets.py qa-output/results.json --config qa-config.json
@@ -95,7 +95,7 @@ python3 $S/retest_tickets.py --previous qa-output/results.json --current retest/
 python3 $S/build_outputs.py retest/results.json
 ```
 
-Journeys are declarative JSON (goto, click, fill, type, press, tab_until_focus, expect_url, expect_lang, expect_text, expect_visible/hidden, expect_attr, expect_no_horizontal_overflow, screenshot), with per-language URL correspondences and expected strings. See [`references/tooling.md`](skills/recette-web-multilingue/references/tooling.md) and the [example config](skills/recette-web-multilingue/assets/templates/qa-config.example.json).
+Journeys are declarative JSON (goto, click, fill, type, press, tab_until_focus, expect_url, expect_lang, expect_text, expect_visible/hidden, expect_attr, expect_no_horizontal_overflow, screenshot), with per-language URL correspondences and expected strings. See [`references/tooling.md`](skills/multilingual-website-release-qa-claude/references/tooling.md) and the [example config](skills/multilingual-website-release-qa-claude/assets/templates/qa-config.example.json).
 
 ## Optional tools
 
@@ -136,7 +136,7 @@ To revalidate after a change: start `tests/demo-site/server.py`, run the skill o
 ## Repository layout
 
 ```
-skills/recette-web-multilingue/   the skill (install this folder)
+skills/multilingual-website-release-qa-claude/   the skill (install this folder)
   SKILL.md, references/, assets/templates/, scripts/
 tests/demo-site/                  local FR/EN demo site (with --fixed mode) and its QA config
 tests/oracle/                     answer key, never shown to the auditing agent

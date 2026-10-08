@@ -3,11 +3,11 @@
 > Adaptation pour Claude Code du brief rédigé pour la version ChatGPT / Codex (`recette-web-multilingue-chatgpt`).
 > Les exigences fonctionnelles (sections 2 à 11) sont inchangées ; les différences portent sur l'outil de création, l'emplacement du projet, le format du skill, les outils de l'agent et la livraison. Elles sont résumées en fin de document.
 
-Utilise le skill de création de skills de Claude (`skill-creator`) comme procédure de référence pour créer un skill Claude Code réutilisable nommé `recette-web-multilingue`, destiné aux agences, équipes produit et développeurs.
+Utilise le skill de création de skills de Claude (`skill-creator`) comme procédure de référence pour créer un skill Claude Code réutilisable nommé `multilingual-website-release-qa-claude`, destiné aux agences, équipes produit et développeurs.
 
-Le projet vit dans un dépôt GitHub public dédié, `recette-web-multilingue-claude`, sous le compte qui héberge déjà les skills Claude du catalogue (MrBridgeHQ). Le suffixe `-claude` distingue cette version de la version ChatGPT. Les commits sont publiés uniquement dans ce dépôt dédié : aucun autre dépôt (notamment le catalogue `skills`) n'est modifié dans le cadre de cette mission.
+Le projet vit dans un dépôt GitHub public dédié, `multilingual-website-release-qa-claude`, sous le compte qui héberge déjà les skills Claude du catalogue (MrBridgeHQ). Le dépôt porte le même nom que le slug du skill ; le suffixe `-claude` distingue cette version de la version ChatGPT. Les commits sont publiés uniquement dans ce dépôt dédié : aucun autre dépôt (notamment le catalogue `skills`) n'est modifié dans le cadre de cette mission.
 
-Rédige le skill et toutes ses ressources éditoriales en anglais : `SKILL.md`, description, références, documentation, `README.md`, modèles, explications de configuration, commentaires et exemples. Titre public anglais « Multilingual Website Release QA », slug technique `recette-web-multilingue`. Les clés de schéma, statuts structurés et noms des fichiers générés sont en anglais.
+Rédige le skill et toutes ses ressources éditoriales en anglais : `SKILL.md`, description, références, documentation, `README.md`, modèles, explications de configuration, commentaires et exemples. Nom public anglais « Multilingual Website Release QA Claude », slug technique (champ `name` du frontmatter, dossier du skill et nom du dépôt) `multilingual-website-release-qa-claude`. Ce choix remplace le slug `recette-web-multilingue` de la version ChatGPT. Les clés de schéma, statuts structurés et noms des fichiers générés sont en anglais.
 
 Sa promesse : tester réellement les parcours essentiels d'un site multilingue, puis transformer les défauts observés en tickets reproductibles, accompagnés de preuves, d'une gravité motivée et de critères d'acceptation.
 
@@ -31,7 +31,7 @@ Le skill comprend les demandes en anglais et en français. Exemples d'activation
 - “Turn the observed bugs into actionable tickets.”
 - “Retest the issues that have been fixed.”
 
-Dans Claude Code, le déclenchement repose sur le champ `description` du frontmatter : il doit dire ce que fait le skill **et** quand l'utiliser, de façon assez explicite pour éviter le sous-déclenchement. Le skill est aussi invocable directement par `/recette-web-multilingue`.
+Dans Claude Code, le déclenchement repose sur le champ `description` du frontmatter : il doit dire ce que fait le skill **et** quand l'utiliser, de façon assez explicite pour éviter le sous-déclenchement. Le skill est aussi invocable directement par `/multilingual-website-release-qa-claude`.
 
 Hors périmètre : simple traduction, audit SEO complet, pentest, certification juridique.
 
@@ -99,13 +99,13 @@ Spécificités Claude :
 
 ### A. Installation dans Claude Code
 
-- Installation globale : copier ou lier `skills/recette-web-multilingue` dans `~/.claude/skills/recette-web-multilingue` ; installation projet : dans `.claude/skills/`.
+- Installation globale : copier ou lier `skills/multilingual-website-release-qa-claude` dans `~/.claude/skills/multilingual-website-release-qa-claude` ; installation projet : dans `.claude/skills/`.
 - Vérifier que le skill est découvert et chargeable par une invocation de contrôle réelle (par exemple une session `claude -p` qui charge le skill et lit ses ressources), et documenter le résultat. La simple présence des fichiers ne suffit pas.
 - Le dépôt GitHub est la source de référence ; la mise à jour se fait par `git pull` (lien symbolique) ou nouvelle copie.
 
 ### B. Dépôt GitHub public dédié
 
-- Créer `recette-web-multilingue-claude` sous le compte des skills Claude existants (MrBridgeHQ), public, ou vérifier puis réutiliser ce dépôt s'il existe.
+- Créer `multilingual-website-release-qa-claude` sous le compte des skills Claude existants (MrBridgeHQ), public, ou vérifier puis réutiliser ce dépôt s'il existe.
 - `README.md` anglais à la racine : objectif et cas d'usage, installation vérifiée, prérequis et outils facultatifs, exemples d'invocation, livrables et limites, validation et mise à jour. Même pied de page que les autres skills du catalogue.
 - Versionner les tests et exemples synthétiques utiles. Licence MIT comme les autres dépôts.
 - Publier uniquement le skill et ses ressources ; exclure `skill-creator`, secrets, configurations personnelles, données clients et résultats d'audits réels. Vérifier l'historique publié.
@@ -121,19 +121,20 @@ Identiques au brief ChatGPT, en remplaçant : `$codex-skill-master` → `skill-c
 
 Exemple d'invocation à adapter :
 
-> “Use the recette-web-multilingue skill to run release QA on <URL_TO_TEST> in French and English, on desktop and mobile. Start by defining the priority user journeys, execute the available checks, and produce the audit report, structured results, and tickets with evidence.”
+> “Use the multilingual-website-release-qa-claude skill to run release QA on <URL_TO_TEST> in French and English, on desktop and mobile. Start by defining the priority user journeys, execute the available checks, and produce the audit report, structured results, and tickets with evidence.”
 
-ou, dans Claude Code : `/recette-web-multilingue run release QA on <URL_TO_TEST> in French and English, desktop and mobile`.
+ou, dans Claude Code : `/multilingual-website-release-qa-claude run release QA on <URL_TO_TEST> in French and English, desktop and mobile`.
 
 ## Récapitulatif des adaptations Codex → Claude
 
 | Sujet | Version ChatGPT / Codex | Version Claude |
 |---|---|---|
 | Outil de création | `$codex-skill-master` | `skill-creator` (Anthropic) |
-| Emplacement | `/home/emmanuel/projects/skills/recette-web-multilingue-chatgpt/` | Dépôt GitHub dédié `recette-web-multilingue-claude`, structure `skills/recette-web-multilingue/` |
+| Emplacement | `/home/emmanuel/projects/skills/recette-web-multilingue-chatgpt/` | Dépôt GitHub dédié `multilingual-website-release-qa-claude`, structure `skills/multilingual-website-release-qa-claude/` |
 | Instructions projet | `AGENTS.md` | `CLAUDE.md` |
 | Métadonnées | `agents/openai.yaml` facultatif | Frontmatter `name` + `description` uniquement |
-| Découverte | Installation Codex | `~/.claude/skills/` ou `.claude/skills/`, commande `/recette-web-multilingue` |
+| Découverte | Installation Codex | `~/.claude/skills/` ou `.claude/skills/`, commande `/multilingual-website-release-qa-claude` |
 | Navigateur | Outil autorisé ou Playwright | Playwright via script, Claude in Chrome ou navigateur intégré |
 | Audit indépendant et rejeu | Agent indépendant si disponible | Sous-agents (outil Agent) |
+| Nom et slug | « Multilingual Website Release QA », slug `recette-web-multilingue` | « Multilingual Website Release QA Claude », slug `multilingual-website-release-qa-claude` |
 | Documentation | developers.openai.com/codex/build-skills | code.claude.com/docs/en/skills |

@@ -1,6 +1,6 @@
 # Release QA report - Northwind Outdoor demo - FR/EN release QA
 
-Campaign `NEG-browser` · 2026-10-08T14:49:08.650Z → 2026-10-08T14:49:08.651Z
+Campaign `NEG-browser` · 2026-10-08T16:46:27.115Z → 2026-10-08T16:46:27.128Z
 
 ## 1. Scope
 

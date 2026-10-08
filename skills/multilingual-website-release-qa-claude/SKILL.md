@@ -1,9 +1,9 @@
 ---
-name: recette-web-multilingue
-description: Multilingual Website Release QA. Actually executes the key user journeys of a multilingual website (navigation, language switching, redirects, search, forms, mobile menu, localized content, basic keyboard access) in each language and device profile, then turns every observed defect into a reproducible ticket with evidence, a justified severity and acceptance criteria. Produces audit-report.md, results.json, tickets.csv and an evidence folder. Use it whenever someone wants release QA, acceptance testing ("recette"), a pre-delivery check or a retest of fixed bugs on a website with two or more languages, or asks to check language switching, translated error messages or the mobile menu per language, or to turn observed bugs into actionable tickets - in English or French, even if they never say "QA". Not for plain translation work, full SEO audits, penetration tests or legal compliance certification.
+name: multilingual-website-release-qa-claude
+description: Multilingual Website Release QA Claude. Actually executes the key user journeys of a multilingual website (navigation, language switching, redirects, search, forms, mobile menu, localized content, basic keyboard access) in each language and device profile, then turns every observed defect into a reproducible ticket with evidence, a justified severity and acceptance criteria. Produces audit-report.md, results.json, tickets.csv and an evidence folder. Use it whenever someone wants release QA, acceptance testing ("recette"), a pre-delivery check or a retest of fixed bugs on a website with two or more languages, or asks to check language switching, translated error messages or the mobile menu per language, or to turn observed bugs into actionable tickets - in English or French, even if they never say "QA". Not for plain translation work, full SEO audits, penetration tests or legal compliance certification.
 ---
 
-# Multilingual Website Release QA
+# Multilingual Website Release QA Claude
 
 This skill runs a **reproducible release QA campaign** on a multilingual website and delivers tickets a developer can act on without a phone call. Its value comes from three disciplines: test what you can really observe, never claim more than the evidence shows, and write every defect so that someone else can replay it.
 

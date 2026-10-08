@@ -16,7 +16,7 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SKILL = ROOT / "skills" / "recette-web-multilingue" / "scripts"
+SKILL = ROOT / "skills" / "multilingual-website-release-qa-claude" / "scripts"
 BASE = json.loads((ROOT / "tests" / "demo-site" / "qa-config.json").read_text(encoding="utf-8"))
 PORT = 8766
 

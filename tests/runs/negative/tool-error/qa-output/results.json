@@ -5,8 +5,8 @@
     "name": "Northwind Outdoor demo - FR/EN release QA",
     "label": null,
     "environment": "local demo (tests/demo-site/server.py on 127.0.0.1:8765)",
-    "started_at": "2026-10-08T14:49:09.812Z",
-    "finished_at": "2026-10-08T14:49:10.118Z",
+    "started_at": "2026-10-08T16:46:29.779Z",
+    "finished_at": "2026-10-08T16:46:30.249Z",
     "output_language": "en"
   },
   "scope": {
@@ -143,8 +143,8 @@
       "case_id": "J01-en-desktop",
       "status": "BLOCKED",
       "reason": "tool could not perform step 1: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8799/en/",
-      "started_at": "2026-10-08T14:49:09.812Z",
-      "finished_at": "2026-10-08T14:49:09.948Z",
+      "started_at": "2026-10-08T16:46:29.779Z",
+      "finished_at": "2026-10-08T16:46:30.018Z",
       "url_final": "chrome-error://chromewebdata/",
       "steps": [
         {
@@ -247,8 +247,8 @@
       "case_id": "J01-fr-desktop",
       "status": "BLOCKED",
       "reason": "tool could not perform step 1: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8799/fr/",
-      "started_at": "2026-10-08T14:49:09.986Z",
-      "finished_at": "2026-10-08T14:49:10.069Z",
+      "started_at": "2026-10-08T16:46:30.058Z",
+      "finished_at": "2026-10-08T16:46:30.207Z",
       "url_final": "chrome-error://chromewebdata/",
       "steps": [
         {

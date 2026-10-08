@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Local FR/EN demo site used to validate the recette-web-multilingue skill.
+"""Local FR/EN demo site used to validate the multilingual-website-release-qa-claude skill.
 
 Synthetic data only, no external calls. The contact form "submission" is kept
 in memory and never leaves the process.

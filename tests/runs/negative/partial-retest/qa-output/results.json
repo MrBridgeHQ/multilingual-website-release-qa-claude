@@ -5,8 +5,8 @@
     "name": "Northwind Outdoor demo - FR/EN release QA",
     "label": null,
     "environment": "local demo (tests/demo-site/server.py on 127.0.0.1:8765)",
-    "started_at": "2026-10-08T14:49:15.359Z",
-    "finished_at": "2026-10-08T14:49:18.567Z",
+    "started_at": "2026-10-08T16:46:35.592Z",
+    "finished_at": "2026-10-08T16:46:38.817Z",
     "output_language": "en"
   },
   "scope": {
@@ -144,8 +144,8 @@
       "case_id": "J02-fr-desktop",
       "status": "FAIL",
       "reason": "expected path /fr/a-propos, observed /fr/apropos",
-      "started_at": "2026-10-08T14:49:15.359Z",
-      "finished_at": "2026-10-08T14:49:18.527Z",
+      "started_at": "2026-10-08T16:46:35.592Z",
+      "finished_at": "2026-10-08T16:46:38.770Z",
       "url_final": "http://127.0.0.1:8766/fr/apropos",
       "steps": [
         {
@@ -262,7 +262,7 @@
       "retest_procedure": "node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J02 --languages fr, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.",
       "status": "STILL_FAILING",
       "retest": {
-        "date": "2026-10-08T14:49:18+00:00",
+        "date": "2026-10-08T16:46:38+00:00",
         "campaign": "NEG-retest",
         "previous_status": "OPEN",
         "case_statuses": {
@@ -322,7 +322,7 @@
       "retest_procedure": "node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J03 --languages en, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.",
       "status": "NOT_RETESTED",
       "retest": {
-        "date": "2026-10-08T14:49:18+00:00",
+        "date": "2026-10-08T16:46:38+00:00",
         "campaign": "NEG-retest",
         "previous_status": "OPEN",
         "case_statuses": {
@@ -381,7 +381,7 @@
       "retest_procedure": "node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J04 --languages en, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.",
       "status": "NOT_RETESTED",
       "retest": {
-        "date": "2026-10-08T14:49:18+00:00",
+        "date": "2026-10-08T16:46:38+00:00",
         "campaign": "NEG-retest",
         "previous_status": "OPEN",
         "case_statuses": {
@@ -441,7 +441,7 @@
       "retest_procedure": "node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J07 --languages en, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.",
       "status": "NOT_RETESTED",
       "retest": {
-        "date": "2026-10-08T14:49:18+00:00",
+        "date": "2026-10-08T16:46:38+00:00",
         "campaign": "NEG-retest",
         "previous_status": "OPEN",
         "case_statuses": {
@@ -505,7 +505,7 @@
       "retest_procedure": "node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J08 --languages fr, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.",
       "status": "NOT_RETESTED",
       "retest": {
-        "date": "2026-10-08T14:49:18+00:00",
+        "date": "2026-10-08T16:46:38+00:00",
         "campaign": "NEG-retest",
         "previous_status": "OPEN",
         "case_statuses": {
@@ -566,7 +566,7 @@
       "retest_procedure": "node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J09 --languages fr, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.",
       "status": "NOT_RETESTED",
       "retest": {
-        "date": "2026-10-08T14:49:18+00:00",
+        "date": "2026-10-08T16:46:38+00:00",
         "campaign": "NEG-retest",
         "previous_status": "OPEN",
         "case_statuses": {
@@ -624,7 +624,7 @@
       "retest_procedure": "node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J10 --languages en, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.",
       "status": "NOT_RETESTED",
       "retest": {
-        "date": "2026-10-08T14:49:18+00:00",
+        "date": "2026-10-08T16:46:38+00:00",
         "campaign": "NEG-retest",
         "previous_status": "OPEN",
         "case_statuses": {
@@ -682,7 +682,7 @@
       "retest_procedure": "node <skill-dir>/scripts/run_journeys.cjs --config qa-config.json --out <retest-dir> --journeys J10 --languages fr, then python3 <skill-dir>/scripts/retest_tickets.py --previous qa-output/results.json --current <retest-dir>/results.json; finally replay the numbered steps by hand.",
       "status": "NOT_RETESTED",
       "retest": {
-        "date": "2026-10-08T14:49:18+00:00",
+        "date": "2026-10-08T16:46:38+00:00",
         "campaign": "NEG-retest",
         "previous_status": "OPEN",
         "case_statuses": {
